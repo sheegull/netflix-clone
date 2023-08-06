@@ -3,6 +3,8 @@ import instance from "../utils/axios";
 import "../styles/Row.scss";
 import YouTube from "react-youtube";
 
+const base_url = "https://image.tmdb.org/t/p/original/";
+
 type Props = {
   title: string;
   fetchUrl: string;
@@ -29,7 +31,6 @@ type Options = {
 export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [trailerUrl, setTrailerUrl] = useState<string | null>("");
-  const base_url = "https://image.tmdb.org/t/p/original/"; //場所確認
 
   useEffect(() => {
     async function fetchData() {
