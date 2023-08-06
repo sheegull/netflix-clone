@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import instance from "../utils/axios";
 
 type Props = {
   title: string;
@@ -8,7 +8,7 @@ type Props = {
 };
 
 type Movie = {
-  id: string; // check
+  id: number;
   name: string;
   title: string;
   original_name: string;
@@ -21,7 +21,7 @@ export const Row = ({ title, fetchUrl }: Props) => {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(fetchUrl);
+      const request = await instance.get(fetchUrl);
       setMovies(request.data.results);
       return request;
     }
